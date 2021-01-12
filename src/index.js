@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { HotelLayout } from './Hotels/components/';
+import 'react-bulma-components/dist/react-bulma-components.min.css';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
