@@ -1,10 +1,11 @@
 import React from 'react'
-import { Loader } from 'react-bulma-components'
 
 const Loading = () => {
     return (
-        <div className="columns is-centered">
-            <Loader style={{ width: 100, height: 100 }}/>
+        <div className="d-flex justify-content-center m-5">
+            <div className="spinner-border" role="status" style={{ width: '3rem', height: '3rem' }}>
+                <span className="visually-hidden">Loading...</span>
+            </div>
         </div>
     )
 }

@@ -1,21 +1,20 @@
 import React, { Component } from 'react'
 import Hotel from './Hotel'
-import { Columns} from 'react-bulma-components'
 import PropTypes from 'prop-types';
 
 
 class Hotels extends Component {
     render() {
         return (
-            <Columns>
+            <div className="">
                 {
                     this.props.hotels.map((e) =>
-                        <Columns.Column size={4} key={e.id}>
+                        <div key={e.id}>
                             <Hotel hotel={e} />
-                        </Columns.Column>
+                        </div>
                     )
                 }
-            </Columns>
+            </div>
         )
     }
 }

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Card, Heading, Image } from 'react-bulma-components';
 
 const baseUrl = process.env.REACT_APP_BASE_URL;
 class Hotel extends Component {
@@ -7,34 +6,42 @@ class Hotel extends Component {
     render() {
         const { hotel } = this.props;
         return (
-            <Card>
-                <Card.Image size="16by9" src={`${baseUrl}public/img/hotels/${hotel.image}`} />
-                <Card.Content>
-                    <Heading>{hotel.name}</Heading>
-                    <Heading subtitle size={6}>{this.convert(hotel.price)}</Heading>
-                    <Heading>
-                        <figure className="image is-64x64 columns" >
-                            {this.stars(hotel.stars)}
-                        </figure>
-                    </Heading>
-                    <Heading>
-                        <figure className="image is-64x64 columns">
-                            {this.amenities(hotel.amenities)}
-                        </figure>
-                    </Heading>
 
-                </Card.Content>
-            </Card>
+            <div className="col-12 card mb-3 pt-4 pb-4 ps-4 pe-4">
+                <div className="row g-0">
+                    <div id="card-img" className="col-12 col-md-4">
+                        <img src={`${baseUrl}public/img/hotels/${hotel.image}`} alt={`Foto de ${hotel.name}`} style={{ width: '100%' }} />
+                    </div>
+                    <div className="col-12 col-md-5">
+                        <div className="card-body p-0">
+                            <strong><h5 className="card-title" style={{ color: '#3B6BC5' }}>{hotel.name}</h5></strong>
+                            <picture className="card-text">{this.stars(hotel.stars)}</picture>
+                            <p className="card-text"><small className="text-muted">{this.amenities(hotel.amenities)}</small></p>
+                        </div>
+                    </div>
+                    <div id="card" className="col-12 col-md-3">
+                        <div className="card text-center border-0">
+                            <div className="card-body">
+                                <p className="card-title text-black-50">Precio por noche por habitación</p>
+                                <p className="card-text" style={{ fontSize: '1.5rem', color: 'orange' }}>ARS&nbsp;<strong>{this.convert(hotel.price)}</strong></p>
+                            </div>
+                            <a href="/" className="card-title btn btn-block" style={{ margin: '0 1rem 1rem',backgroundColor: '#0E47A1', color: 'white', textTransform: 'uppercase' }} >Ver hotel</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
         )
     }
 
     stars(number) {
 
         const uriStar = `${baseUrl}public/ico/filters/star.svg`;
-        let starSvg = []; // estrellas del hotel
+        let starSvg = []; // stars of the hotel
         for (let i = 0; i < number; i++) {
             starSvg.push((
-                <Image key={i} src={uriStar} />
+                <img key={i} src={uriStar} alt={`Star ${i + 1}`} style={{ width: 20, height: 15 }} />
             ))
         }
 
@@ -48,12 +55,11 @@ class Hotel extends Component {
 
     amenities(service) {
 
-        let serviceSvg = []; // amenitites
+        let serviceSvg = []; // amenitites of the hotel
 
         for (let i = 0; i < service.length; i++) {
-            console.log(i + 1, `${baseUrl}public/ico/amenities/${service[i]}.svg`)
             serviceSvg.push((
-                <Image key={i} src={`${baseUrl}public/ico/amenities/${service[i]}.svg`} />
+                <img key={i} src={`${baseUrl}public/ico/amenities/${service[i]}.svg`} alt={`${service[i]}`} style={{ width: 20, height: 15 }} />
             ))
         }
 
@@ -64,16 +70,14 @@ class Hotel extends Component {
         )
     }
 
-    // convertir a pesos argentinos
+    // convert to Argentine pesos
     convert(price) {
 
         if (isNaN(price)) {
             return console.error('Not a number');
         }
-                
-        let result = Math.round(price).toLocaleString('es-ar', {
-            style: 'currency',
-            currency: 'ARS',
+
+        let result = Math.round(price).toLocaleString('en-EN', {
             minimumFractionDigits: 0
         })
 
