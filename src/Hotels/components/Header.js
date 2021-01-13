@@ -8,7 +8,7 @@ const Header = () => {
         <header className="navbar" style={{backgroundColor: '#0E47A1'}} >
             <div className="container-fluid">
                 <a id="logo" className="navbar-brand" href="/">
-                    <img src={logo} alt="aviatur-logo" style={{width: 170, height: 28}}  />
+                    <img src={logo} alt="aviatur-logo" style={{width: '170px', height: 28}}  />
                 </a>
             </div>
         </header>

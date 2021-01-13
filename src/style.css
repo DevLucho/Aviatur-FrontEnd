@@ -2,14 +2,23 @@ body{
     background: #F2F2F2;
 }
 
+.search:focus{
+    outline: none;
+}
+
 #card-img{
     padding-right: 30px;
 }
 
-
 #card{
     border: 0;
     border-left: 2px dashed gray;
+}
+
+@media (min-width: 768px){
+    .padding-s{
+        padding-left: 0px;
+    }
 }
 
 @media (max-width: 768px) {

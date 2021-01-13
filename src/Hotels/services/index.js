@@ -13,6 +13,7 @@ export async function getHotels(){
     }
 }
 
+// filtrar por estrellas
 export async function postHotels(starsData) {
     try {
         const response = await axios({
@@ -27,3 +28,15 @@ export async function postHotels(starsData) {
     }
 }
 
+// filtrar por nombre de hotel
+export async function getSearchHotels(filter){
+    try {
+        const response = await axios({
+            url: `${baseUrl}api/hotels/${filter}`
+        })
+        
+        return response
+    } catch (error) {
+        console.log(error)   
+    }
+}

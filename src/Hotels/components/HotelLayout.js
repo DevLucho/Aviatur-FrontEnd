@@ -1,24 +1,28 @@
 import React, { useState, useEffect } from 'react'
-import { postHotels } from '../services';
-import { Hotels, Loading, Header, Filters, CheckBox } from './';
+import { postHotels, getSearchHotels } from '../services';
+import { Hotels, Loading, Header, Filters, CheckBox, Input } from './';
 
 const HotelLayout = () => {
 
     const [hotels, setHotels] = useState([]);
     const [isLoading, setIsLoading] = useState(true)
 
-    async function loadHotels(arr) {
-        const response = await postHotels(arr);
+    async function loadHotels(data, n) {
+        const response = n === 1 ? await getSearchHotels(data) : await postHotels(data)
         if (response.status === 200) {
             setHotels(response.data);
         }
         setIsLoading(false);
     }
 
+    // Buscador
+    const search = (data) => {
+        loadHotels(data, 1);
+    }
+
     // Filtrar por estrellas
     const starFilters = (filters) => {
-        console.log(filters);
-        loadHotels(filters);
+        loadHotels(filters, 2);
     }
 
     // Despues de renderizar se ejecuta
@@ -33,7 +37,8 @@ const HotelLayout = () => {
                 <div className="row">
                     <div className="col-12 col-md-3">
                         <h4 id="txtFiltrar" className="text-black-50">Filtros</h4>
-                        <Filters  
+                        <Filters
+                            input={<Input searchTerm={ data => search(data) }/>}
                             checked={<CheckBox handleFilters={filters => starFilters(filters)}/>} 
                         />
                     </div>
@@ -41,7 +46,7 @@ const HotelLayout = () => {
                         { isLoading && <Loading /> }
                         {
                             !isLoading && !hotels.length && (
-                                <h2 className="d-flex justify-content-center m-5">No hay hoteles filtrados.</h2>
+                                <h2 className="d-flex justify-content-center m-5">No hay hoteles que concuerden con los filtros.</h2>
                             )
                         }
                         {

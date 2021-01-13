@@ -29,15 +29,22 @@ class Filters extends Component {
                                         &nbsp;&nbsp;&nbsp;Nombre del hotel
                                     </li>
                                     <li className="list-group-item pt-5 pb-5">
-                                        <img src={uriBed} alt="icon-bed" style={{ width: 25 }} />
-                                        &nbsp;&nbsp;&nbsp;Buscador
+                                        <div className="row">
+
+                                            <div className="col-1 col-md-2">
+                                                <img src={uriBed} alt="icon-bed" style={{ width: 25 }} />
+                                            </div>
+                                            <div className="col-11 col-md-10 padding-s">
+                                               {this.props.input}
+                                            </div>
+                                        </div>
                                     </li>
                                     <li className="list-group-item">
                                         <img src={uriStar} alt="icon-star" style={{ width: 20 }} />
                                         &nbsp;&nbsp;&nbsp;Estrellas
                                     </li>
                                     <li className="list-group-item pt-4 pb-5">
-                                        { this.props.checked }
+                                        {this.props.checked}
                                     </li>
                                 </ul>
                             </div>
