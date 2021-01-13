@@ -1,5 +1,6 @@
 {
   "name": "aviantur-frontend",
+  "author": "Luis David Huertas Redondo",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
