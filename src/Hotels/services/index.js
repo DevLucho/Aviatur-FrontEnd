@@ -12,3 +12,18 @@ export async function getHotels(){
         console.error(error);
     }
 }
+
+export async function postHotels(starsData) {
+    try {
+        const response = await axios({
+            url: `${baseUrl}api/hotels`,
+            method: 'POST',
+            data: starsData
+        })
+
+        return response
+    } catch (error) {
+        console.error(error);
+    }
+}
+

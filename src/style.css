@@ -6,6 +6,7 @@ body{
     padding-right: 30px;
 }
 
+
 #card{
     border: 0;
     border-left: 2px dashed gray;
@@ -23,5 +24,8 @@ body{
     }
     #card-img{
         padding: 0;
+    }
+    #txtFiltrar{
+        display: none;
     }
 }

@@ -15,7 +15,7 @@ class Hotel extends Component {
                     <div className="col-12 col-md-5">
                         <div className="card-body p-0">
                             <strong><h5 className="card-title" style={{ color: '#3B6BC5' }}>{hotel.name}</h5></strong>
-                            <picture className="card-text">{this.stars(hotel.stars)}</picture>
+                            <picture className="card-text">{Hotel.stars(hotel.stars)}</picture>
                             <p className="card-text"><small className="text-muted">{this.amenities(hotel.amenities)}</small></p>
                         </div>
                     </div>
@@ -35,7 +35,7 @@ class Hotel extends Component {
         )
     }
 
-    stars(number) {
+    static stars(number) {
 
         const uriStar = `${baseUrl}public/ico/filters/star.svg`;
         let starSvg = []; // stars of the hotel
@@ -59,7 +59,12 @@ class Hotel extends Component {
 
         for (let i = 0; i < service.length; i++) {
             serviceSvg.push((
-                <img key={i} src={`${baseUrl}public/ico/amenities/${service[i]}.svg`} alt={`${service[i]}`} style={{ width: 20, height: 15 }} />
+                <img 
+                    key={i} 
+                    src={`${baseUrl}public/ico/amenities/${service[i]}.svg`} 
+                    alt={`${service[i]}`} 
+                    style={{ width: 25, height: 15 }} 
+                />
             ))
         }
 
@@ -70,7 +75,7 @@ class Hotel extends Component {
         )
     }
 
-    // convert to Argentine pesos
+    // convert to format money
     convert(price) {
 
         if (isNaN(price)) {
