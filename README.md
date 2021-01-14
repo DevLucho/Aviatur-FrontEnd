@@ -6,3 +6,10 @@
 > cd Aviatur-FrontEnd-master
 > npm install
 ```
+
+## Servidor
+```
+> npm start
+
+```
+- http://localhost:3000/

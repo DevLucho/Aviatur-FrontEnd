@@ -8,11 +8,15 @@ const HotelLayout = () => {
     const [isLoading, setIsLoading] = useState(true)
 
     async function loadHotels(data, n) {
-        const response = n === 1 ? await getSearchHotels(data) : await postHotels(data)
-        if (response.status === 200) {
-            setHotels(response.data);
+        try {
+            const response = n === 1 ? await getSearchHotels(data) : await postHotels(data)
+            if (response.status === 200) {
+                setHotels(response.data);
+            }
+            setIsLoading(false);
+        } catch (error) {
+            console.log(error)            
         }
-        setIsLoading(false);
     }
 
     // Buscador
