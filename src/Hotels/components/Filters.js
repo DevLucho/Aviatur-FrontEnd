@@ -35,7 +35,7 @@ class Filters extends Component {
                                                 <img src={uriBed} alt="icon-bed" style={{ width: 25 }} />
                                             </div>
                                             <div className="col-11 col-md-10 padding-s">
-                                               {this.props.input}
+                                                {this.props.input}
                                             </div>
                                         </div>
                                     </li>

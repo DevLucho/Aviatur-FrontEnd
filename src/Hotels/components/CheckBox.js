@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import Hotel from './Hotel'
+import { Hotel } from './'
 
 
 function StarsCheck() {

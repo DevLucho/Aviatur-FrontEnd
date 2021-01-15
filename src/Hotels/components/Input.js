@@ -4,12 +4,10 @@ function Input(props) {
 
     const [searchTerm, setsearchTerm] = useState('');
 
-    
     const handleSearch = (value) => {
         setsearchTerm(value);
         props.searchTerm(searchTerm);
     }
-
 
     return (
         <input

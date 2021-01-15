@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { deleteHotel, findByIdHotel } from '../services/'
 
 const baseUrl = process.env.REACT_APP_BASE_URL;
 class Hotel extends Component {
@@ -16,7 +17,7 @@ class Hotel extends Component {
                         <div className="card-body p-0">
                             <strong><h5 className="card-title" style={{ color: '#3B6BC5' }}>{hotel.name}</h5></strong>
                             <picture className="card-text">{Hotel.stars(hotel.stars)}</picture>
-                            <p className="card-text"><small className="text-muted">{this.amenities(hotel.amenities)}</small></p>
+                            <p className="card-text"><small className="text-muted">{Hotel.amenities(hotel.amenities)}</small></p>
                         </div>
                     </div>
                     <div id="card" className="col-12 col-md-3">
@@ -25,13 +26,12 @@ class Hotel extends Component {
                                 <p className="card-title text-black-50">Precio por noche por habitación</p>
                                 <p className="card-text" style={{ fontSize: '1.5rem', color: 'orange' }}>ARS&nbsp;<strong>{this.convert(hotel.price)}</strong></p>
                             </div>
-                            <a href="/" className="card-title btn btn-block" style={{ margin: '0 1rem 1rem',backgroundColor: '#0E47A1', color: 'white', textTransform: 'uppercase' }} >Ver hotel</a>
+                            <button onClick={() => findByIdHotel(hotel._id)} className="card-title btn btn-block" style={{ margin: '0 1rem 1rem',backgroundColor: '#0E47A1', color: 'white', textTransform: 'uppercase' }} >Ver hotel</button>
+                            <button onClick={() => deleteHotel(hotel._id)} style={{ margin: '0 1rem 1rem'}} className="btn btn-danger btn-block" >Eliminar</button>
                         </div>
                     </div>
                 </div>
             </div>
-
-
         )
     }
 
@@ -53,7 +53,7 @@ class Hotel extends Component {
     }
 
 
-    amenities(service) {
+    static amenities(service) {
 
         let serviceSvg = []; // amenitites of the hotel
 

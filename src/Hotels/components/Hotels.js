@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react'
-import Hotel from './Hotel'
+import { Hotel } from './'
 import PropTypes from 'prop-types';
 
 
@@ -9,7 +9,7 @@ class Hotels extends Component {
             <Fragment>
                 {
                     this.props.hotels.map((e) =>
-                        <div key={e.id}>
+                        <div key={e._id}>
                             <Hotel hotel={e} />
                         </div>
                     )
