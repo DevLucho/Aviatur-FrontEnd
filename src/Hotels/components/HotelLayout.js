@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
+import Swal from 'sweetalert2';
 import { Button, Modal } from 'react-bootstrap';
 import { postHotels, getSearchHotels, createHotel } from '../services';
 import { Hotels, Loading, Header, Filters, CheckBox, Input, FormHotel } from './';
@@ -14,10 +15,17 @@ const HotelLayout = () => {
 
     async function loadHotels(data, n) {
         try {
-            const response = n === 1 ? await getSearchHotels(data) : await postHotels(data);
-            if (response.status === 200) {
-                setHotels(response.data.data);
-            }
+            const response = await n === 1 ? getSearchHotels(data) : postHotels(data);
+            response.then(function(value){
+                if (value.status === 200) {
+                    setHotels(value.data.data);
+                } else {
+                    Swal.fire(value.message, '', 'error');
+                }
+            }, function(reason){
+                console.log(reason);
+            })
+            
             setIsLoading(false);
         } catch (error) {
             console.log(error)

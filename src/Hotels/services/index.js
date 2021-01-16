@@ -1,7 +1,5 @@
-import moduleName from 'react'
 import axios from 'axios';
 import Swal from 'sweetalert2'
-import { render } from 'react-dom';
 
 const baseUrl = process.env.REACT_APP_BASE_URL;
 
@@ -37,7 +35,9 @@ export async function findByIdHotel(idHotel) {
         const response = await axios({
             url: `${baseUrl}api/hotels/hotel-id/${idHotel}`
         });
-        console.log(response);
+        // if (response.status) {
+        //     Swal.fire(response.data.message, '', 'error');
+        // }
         return response;
     } catch (error) {
         console.error(error);
@@ -49,6 +49,9 @@ export async function getHotels() {
         const response = await axios({
             url: `${baseUrl}api/hotels`
         });
+        // if (!response.status) {
+        //     Swal.fire(response.data.message, '', 'error');
+        // }
         return response;
     } catch (error) {
         console.error(error);
@@ -107,8 +110,10 @@ export async function postHotels(starsData) {
             url: `${baseUrl}api/hotels`,
             method: 'POST',
             data: starsData
-        })
-
+        });
+        // if (!response.status) {
+        //     Swal.fire(response.data.message, '', 'error');
+        // }
         return response
     } catch (error) {
         console.error(error);
@@ -121,7 +126,9 @@ export async function getSearchHotels(filter) {
         const response = await axios({
             url: `${baseUrl}api/hotels/${filter}`
         })
-
+        // if (!response.status) {
+        //     Swal.fire(response.data.message, '', 'error');
+        // }
         return response
     } catch (error) {
         console.log(error)

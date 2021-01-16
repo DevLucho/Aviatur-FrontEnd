@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
-import { Form, Col, Button } from 'react-bootstrap';
-import { Amenities } from './';
+import { Form, Button } from 'react-bootstrap';
+// import { Amenities } from './';
 
 
 const FormHotel = ({ handleSubmit }) => {

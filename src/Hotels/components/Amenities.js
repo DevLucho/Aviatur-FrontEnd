@@ -1,36 +1,36 @@
 import React from 'react'
-import { publicAmenities } from '../services'
+// import { publicAmenities } from '../services'
 
-const baseUrl = process.env.REACT_APP_BASE_URL;
+// const baseUrl = process.env.REACT_APP_BASE_URL;
 
 const Amenities = () => {
 
 
     //metodo para extraer el nombre de los amenities.
-    async function allAmenities() {
+    // async function allAmenities() {
 
-        const response = await publicAmenities();
-        let arrAmenities = response.data;
-        let arr = [];
-        for (let i = 0; i < arrAmenities.length; i++) {
-            if (arrAmenities[i].endsWith(".svg")) {
-                arr.push(arrAmenities[i].substring(0, arrAmenities[i].lastIndexOf(".svg")));
-            }
-        }
+    //     const response = await publicAmenities();
+    //     let arrAmenities = response.data;
+    //     let arr = [];
+    //     for (let i = 0; i < arrAmenities.length; i++) {
+    //         if (arrAmenities[i].endsWith(".svg")) {
+    //             arr.push(arrAmenities[i].substring(0, arrAmenities[i].lastIndexOf(".svg")));
+    //         }
+    //     }
 
-        return arr;
-    }
+    //     return arr;
+    // }
 
     return (
         <>
             {
-                allAmenities().then( (value) => {
-                    value.map(service => {
-                        console.log(service);
-                    })
-                }, (reason) => {
-                    console.log(reason);
-                })
+                // allAmenities().then( (value) => {
+                //     value.map(service => {
+                //         console.log(service);
+                //     })
+                // }, (reason) => {
+                //     console.log(reason);
+                // })
                     // value.map( (val, i) => {
                         // <div className="form-check" key={i}>
                         //     <input
